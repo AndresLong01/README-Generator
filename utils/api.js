@@ -6,11 +6,11 @@ function getInfo(username){
     .get(queryUrl)
     .then(function({data}){
       console.log(data);
-      const objData = data;
-      return objData;
+      const apiData = data
+      return apiData;
     })
 }
 
 module.exports = {
-  getInfo: getInfo
+  getInfo: getInfo,
 }

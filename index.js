@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-// const api = require("./utils/api");
+const api = require("./utils/api");
 const readme = require("./utils/generateMarkdown.js");
 
 inquirer.prompt([
@@ -29,6 +29,7 @@ inquirer.prompt([
         name: "contributions"
     }
 ]).then(function(data){
+    api.getInfo(data.username)
     fs.writeFile("README.md", readme.generateMarkdown(data), err =>{
         if (err){
             throw err;

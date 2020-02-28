@@ -1,11 +1,11 @@
-// const api = require("./api.js");
+const api = require("./api.js");
 const axios = require("axios");
 
 function generateMarkdown(response) {
   return `
   # ${response.title}
 
-  [![Generic Badge](https://img.shields.io/badge/User-Andres%20Long-red.svg)](https://github.com/AndresLong01)
+  [![Generic Badge](https://img.shields.io/badge/User-Profile-red.svg)](https://github.com/${response.username})
     
   # Description
     
@@ -32,11 +32,11 @@ function generateMarkdown(response) {
   ${response.contributions}
     
   # Questions
-  If you have any questions please contact me at at: ${response.email ? response.email : "e-mail address is protected"}
+  If you have any questions please contact me at at: ${response.email}
     
   My user is also linked at the top under the Generic Badge
     
-  ![profile picture](${response.image} "Profile Picture")
+  ![profile picture](${response.picture} "Profile Picture")
   `;
 }
   
