@@ -29,7 +29,9 @@ inquirer.prompt([
         name: "contributions"
     }
 ]).then(function(data){
-    api.getInfo(data.username)
+    //I lost some progress in regards to my axios call thanks to an unfortunate power outage at my home desktop setup.
+    //I was trying to rewrite everything but I ran low on time. 
+    //api.getInfo(data.username)
     fs.writeFile("README.md", readme.generateMarkdown(data), err =>{
         if (err){
             throw err;

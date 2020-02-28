@@ -36,7 +36,7 @@ function generateMarkdown(response) {
     
   My user is also linked at the top under the Generic Badge
     
-  ![profile picture](${response.picture} "Profile Picture")
+  ![profile picture](https://avatars3.githubusercontent.com/u/58584090?v=4' "Profile Picture")
   `;
 }
   
