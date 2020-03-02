@@ -1,11 +1,16 @@
-const api = require("./api.js");
+// const api = require("./api.js");
 const axios = require("axios");
 
 function generateMarkdown(response) {
+  //Using a regular expression to grab the name value and create a dynamic badge depnding on the user acquired!
+  let badger = new RegExp (/( )/, "gmi");
+  let string = response.name;
+  let badging = string.replace(badger, "%20");
+  //Creating my Structure for the Markdown
   return `
   # ${response.title}
 
-  [![Generic Badge](https://img.shields.io/badge/User-Profile-red.svg)](https://github.com/${response.username})
+  [![Generic Badge](https://img.shields.io/badge/User-${badging}-red.svg)](https://github.com/${response.username})
     
   # Description
     
@@ -32,11 +37,11 @@ function generateMarkdown(response) {
   ${response.contributions}
     
   # Questions
-  If you have any questions please contact me at at: ${response.email}
+  If you have any questions please contact me at at: ${response.email? response.email: "Email protected by github API"}
     
   My user is also linked at the top under the Generic Badge
     
-  ![profile picture](https://avatars3.githubusercontent.com/u/58584090?v=4' "Profile Picture")
+  ![profile picture](${response.picture}' "Profile Picture")
   `;
 }
   

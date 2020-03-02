@@ -7,34 +7,36 @@ inquirer.prompt([
     {
         message: "What is your Github Username?",
         name: "username"
-    },
-    {
-        message: "What will be the Title of your project?",
-        name: "title"
-    },
-    {
-        message: "Write a short description of your project.",
-        name: "description"
-    },
-    {
-        message: "Write a short description of how to Install your project.",
-        name: "install"
-    },
-    {
-        message: "For what purpose have you built such a project? Give a use-scenario.",
-        name: "usage"
-    },
-    {
-        message: "Please write the names of any Contributors for this project. If None, leave blank.",
-        name: "contributions"
     }
-]).then(function(data){
-    //I lost some progress in regards to my axios call thanks to an unfortunate power outage at my home desktop setup.
-    //I was trying to rewrite everything but I ran low on time. 
-    //api.getInfo(data.username)
-    fs.writeFile("README.md", readme.generateMarkdown(data), err =>{
+]).then(function(apiUser){
+    return api.getInfo(apiUser.username)
+}).then(function(userVal){
+    inquirer.prompt([
+        {
+            message: "What will be the Title of your project?",
+            name: "title"
+        },
+        {
+            message: "Write a short description of your project.",
+            name: "description"
+        },
+        {
+            message: "Write a short description of how to Install your project.",
+            name: "install"
+        },
+        {
+            message: "For what purpose have you built such a project? Give a use-scenario.",
+            name: "usage"
+        },
+        {
+            message: "Please write the names of any Contributors for this project. If None, leave blank.",
+            name: "contributions"
+        }
+]).then(function(resVal){
+    fs.writeFile("README.md", readme.generateMarkdown({...userVal, ...resVal}), err =>{
         if (err){
             throw err;
         }
     });
+    })
 });

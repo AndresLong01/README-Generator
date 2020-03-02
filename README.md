@@ -1,7 +1,7 @@
 
-  # ReadMe Generator
+  # README Generator
 
-  [![Generic Badge](https://img.shields.io/badge/User-Profile-red.svg)](https://github.com/AndresLong01)
+  [![Generic Badge](https://img.shields.io/badge/User-Andres%20Long-red.svg)](https://github.com/AndresLong01)
     
   # Description
     
@@ -28,7 +28,7 @@
   None
     
   # Questions
-  If you have any questions please contact me at at: undefined
+  If you have any questions please contact me at at: Email protected by github API
     
   My user is also linked at the top under the Generic Badge
     
